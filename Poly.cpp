@@ -1,7 +1,10 @@
-#include <iostream>
+#include "Poly.h"
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+Polynomial::Polynomial(double free = 0){
+  if(free != 0)
+    this->terms[0] = free;
+}
 
-int main(int argc, char** argv) {
-	return 0;
+std::ostream& Polynomial::operator<<(std::ostream&, const Polynomial&){
+  
 }
