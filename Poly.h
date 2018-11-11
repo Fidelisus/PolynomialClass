@@ -1,20 +1,23 @@
-#pragma once
+//#pragma once
 #include <iostream>
+#include <map>
 
-class Polynomial{
+class Poly{
 public:
-  Polynomial(double free = 0); 
-  ~Polynomial();
-  double operator[](long);
+  Poly(double free = 0); 
+ // ~Poly();
+  double& operator[](unsigned long i);
+  double operator[](unsigned long i) const;
+  double operator() (double x) const;
   
-  friend std::ostream& operator<<(std::ostream&, const Polynomial&);
-  Polynomial operator-();
-  friend Polynomial operator+(const Polynomial&, const Polynomial&);
-  friend Polynomial operator-(const Polynomial&, const Polynomial&);
-  friend Polynomial operator*(const Polynomial&, const Polynomial&);
-  Polynomial operator+=(const Polynomial&);
-  Polynomial operator-=(const Polynomial&);
-  Polynomial operator*=(const Polynomial&);
+  friend std::ostream& operator<<(std::ostream& out, const Poly& poly);
+  Poly operator-() const;
+  friend Poly operator+(const Poly& a, const Poly& b);
+  friend Poly operator-(const Poly& a, const Poly& b);
+  friend Poly operator*(const Poly& a, const Poly& b);
+  Poly operator+=(const Poly& a);
+  Poly operator-=(const Poly& a);
+  Poly operator*=(const Poly& a);
 private:
   std::map<long, double> terms;
-}
+};
